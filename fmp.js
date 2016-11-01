@@ -3,9 +3,12 @@ var FMP = (function() {
       p_random_name,
       p_limits,
       min_input,
-      max_input;
+      max_input,
+      names_data,
+      button_generate_name;
 
   var init = function() {
+    names_data = null;
     stats_generator = document.querySelector('#stats_generator');
     p_limits = document.querySelector('#limits');
     p_random_name = document.querySelector('#random_name');
@@ -14,12 +17,51 @@ var FMP = (function() {
 
     document.querySelector('#btn_go')
             .addEventListener('click', generateStats);
-    document.querySelector('#generate_name')
-            .addEventListener('click', generateRandomName);
+    button_generate_name =  document.querySelector('#generate_name');
+    button_generate_name.addEventListener('click', generateRandomName);
   };
 
   var randomInt = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  var getNamesData = function(callback, onerror) {
+    if (null !== names_data) {
+      if (callback) {
+        return callback();
+      } else {
+        return;
+      }
+    }
+
+    var request = new XMLHttpRequest();
+
+    request.open(
+      'GET',
+      'names.json?' + randomInt(1, Number.MAX_SAFE_INTEGER), // Avoid caching
+      true
+    );
+
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400) {
+        names_data = JSON.parse(request.responseText);
+        if (callback) {
+          callback();
+        }
+      } else {
+        if (onerror) {
+          onerror();
+        }
+      }
+    };
+
+    request.onerror = function() {
+      if (onerror) {
+        onerror();
+      }
+    };
+
+    request.send();
   };
 
   var generateStats = function() {
@@ -42,32 +84,17 @@ var FMP = (function() {
   };
 
   var generateRandomName = function() {
-    var request = new XMLHttpRequest();
-    request.open(
-      'GET',
-      'names.json?' + randomInt(1, Number.MAX_SAFE_INTEGER), // Avoid caching
-      true
-    );
-
-    request.onload = function() {
-      if (request.status >= 200 && request.status < 400) {
-        var data = JSON.parse(request.responseText);
-        first_names = data["first_names"] || [];
-        last_names = data["last_names"] || [];
-        p_random_name.querySelector('.first').innerHTML =
-          first_names[randomInt(0, Math.max(first_names.length - 1, 0))];
-        p_random_name.querySelector('.last').innerHTML =
-          last_names[randomInt(0, Math.max(last_names.length - 1, 0))];
-      } else {
-        alert('Sorry, something is wrong. We fucked up.');
-      }
-    };
-
-    request.onerror = function() {
-      alert('Sorry, something is wrong. We fucked up.');
-    };
-
-    request.send();
+    getNamesData(function() {
+      first_names = names_data["first_names"] || [];
+      last_names = names_data["last_names"] || [];
+      p_random_name.querySelector('.first').innerHTML =
+        first_names[randomInt(0, Math.max(first_names.length - 1, 0))];
+      p_random_name.querySelector('.last').innerHTML =
+        last_names[randomInt(0, Math.max(last_names.length - 1, 0))];
+    }, function() {
+      alert('Sorry, something went wrong. Try again later.');
+      button_generate_name.disabled = true;
+    });
   };
 
   return {
