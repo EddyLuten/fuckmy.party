@@ -43,7 +43,11 @@ var FMP = (function() {
 
   var generateRandomName = function() {
     var request = new XMLHttpRequest();
-    request.open('GET', 'names.json', true);
+    request.open(
+      'GET',
+      'names.json?' + randomInt(1, Number.MAX_SAFE_INTEGER), // Avoid caching
+      true
+    );
 
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
@@ -51,14 +55,16 @@ var FMP = (function() {
         first_names = data["first_names"] || [];
         last_names = data["last_names"] || [];
         p_random_name.querySelector('.first').innerHTML =
-          first_names[randomInt(0, Math.max(first_names.length - 1, 0))]
+          first_names[randomInt(0, Math.max(first_names.length - 1, 0))];
+        p_random_name.querySelector('.last').innerHTML =
+          last_names[randomInt(0, Math.max(last_names.length - 1, 0))];
       } else {
         alert('Sorry, something is wrong. We fucked up.');
       }
     };
 
     request.onerror = function() {
-      // There was a connection error of some sort
+      alert('Sorry, something is wrong. We fucked up.');
     };
 
     request.send();
