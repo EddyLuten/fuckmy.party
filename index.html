@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <title>Fuck My Party - Role-Playing Tools for Jaded Players</title>
+    <script async type='text/javascript' src='fmp.js'></script>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic' />
+    <style type='text/css'>
+    body {
+      font: 1em Roboto;
+      margin: 0;
+      padding: 25px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: #EE7552;
+    }
+    a {
+      color: #397697;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    div.stat {
+      margin: 0;
+      padding: 0;
+      float: left;
+      padding-right: 10px;
+    }
+    div.stat span {
+      padding-left: 5px;
+    }
+    div.stat strong {
+      cursor: help;
+      border-bottom: 1px dashed #333;
+    }
+    div.clear {
+      clear: both;
+    }
+    .error {
+      color: red;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Fuck My Party</h1>
+
+    <p>
+      Feel a deep resentment towards your RPG party? Did your GM fuck you over
+      one too many times? <a href="http://fuckmy.party">fuckmy.party</a>
+      presents you with the tools to fuck them back.
+    </p>
+
+    <h2>Stats Randomizer</h2>
+
+    <p>
+      Fuck rolling stats. Generate some random ones right here.
+    </p>
+
+    <div id="stats_generator">
+
+      <div class="stat">
+        <strong title="Strength">STR</strong>
+        <span>-</span>
+      </div>
+
+      <div class="stat">
+        <strong title="Dexterity">DEX</strong>
+        <span>-</span>
+      </div>
+
+      <div class="stat">
+        <strong title="Constitution">CON</strong>
+        <span>-</span>
+      </div>
+
+      <div class="stat">
+        <strong title="Intelligence">INT</strong>
+        <span>-</span>
+      </div>
+
+      <div class="stat">
+        <strong title="Wisdom">WIS</strong>
+        <span>-</span>
+      </div>
+
+      <div class="stat">
+        <strong title="Charisma">CHA</strong>
+        <span>-</span>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+    <p id="limits">
+      <label for="min">
+        Min
+        <input id="min" type="text" name="min" size="2" max="2" value="8" />
+      </label>,
+
+      <label for="max">
+        Max
+        <input id="max" type="text" name="max" size="2" max="2" value="18" />
+      </label>
+
+      <button id="btn_go">Generate</button>
+    </p>
+
+    <h2>Name Randomizer</h2>
+
+    <p>
+      Names are difficult to come up with, fuck them. Generate a bad name for
+      your character from a list of truly horrible character names. Variables
+      taken into account: <em>none</em>.
+    </p>
+    <p>
+      <button id="generate_name">Generate</button>
+    </p>
+    <p id="random_name">
+      <span class="first"></span> <span class="last"></span>
+    </p>
+  </body>
+</html>
