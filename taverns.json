@@ -1,11 +1,16 @@
 {
   "prefixes": ["The", "Ye Olde", "The Old", "Le", ""],
   "modifiers": [
-    "Yeasty", "Smelly", "Damp", "Cheesy", "Salty", "Crusty", "Noisome"
+    "Yeasty", "Smelly", "Damp", "Cheesy", "Salty", "Crusty", "Noisome", "Boiled", 
+	"Wounded", "Drunken", "Smilin'", "Prancing", "Leaky", "One-Eyed", "Bloated", 
+	"Busty", "Bloody", "Bejeweled", "Last", "Minstrels", "Broken", "Crooked", "Moist",
+	"Soiled", "Insignificant", "Throbbing"
   ],
   "subjects": [
     "Socket", "Trapper", "Bladder", "Pig", "Crow", "Crevasse", "Colon",
-    "Carbuncle", "Pit"
+    "Carbuncle", "Pit", "Wench", "Pony", "Purple People Eater", "Codpeice",
+	"Sack", "Barmaid", "Mermaid", "Merman", "Minstrel", "Dagger", "Arrow",
+	"Giant", "Dryad"
   ],
-  "tavern_types": ["Inn", "Tavern", "Arms", "Pub", ""]
+  "tavern_types": ["Inn", "Tavern", "Arms", "Pub", "Bar 'n Grill"]
 }
