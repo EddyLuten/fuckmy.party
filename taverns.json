@@ -1,0 +1,10 @@
+{
+  "prefixes": ["The", "Ye Olde", ""],
+  "modifiers": [
+    "Yeasty", "Smelly", "Damp", "Cheesy", "Salty"
+  ],
+  "subjects": [
+    "Socket", "Trapper", "Bladder", "Pig", "Crow", "Crevasse"
+  ],
+  "tavern_types": ["Inn", "Tavern", "Arms", "Pub", ""]
+}
