@@ -1,16 +1,17 @@
 {
   "prefixes": ["The", "Ye Olde", "The Old", "Le", ""],
   "modifiers": [
-    "Yeasty", "Smelly", "Damp", "Cheesy", "Salty", "Crusty", "Noisome", "Boiled", 
-	"Wounded", "Drunken", "Smilin'", "Prancing", "Leaky", "One-Eyed", "Bloated", 
-	"Busty", "Bloody", "Bejeweled", "Last", "Minstrels", "Broken", "Crooked", "Moist",
-	"Soiled", "Insignificant", "Throbbing"
+    "Yeasty", "Smelly", "Damp", "Cheesy", "Salty", "Crusty", "Noisome",
+    "Boiled", "Wounded", "Drunken", "Smilin'", "Prancing", "Leaky", "One-Eyed",
+    "Bloated", "Busty", "Bloody", "Bejeweled", "Last", "Minstrels", "Broken",
+    "Crooked", "Moist", "Soiled", "Insignificant", "Throbbing", "Rotten",
+    "Dripping", "Wet", "Scaly"
   ],
   "subjects": [
     "Socket", "Trapper", "Bladder", "Pig", "Crow", "Crevasse", "Colon",
-    "Carbuncle", "Pit", "Wench", "Pony", "Purple People Eater", "Codpeice",
-	"Sack", "Barmaid", "Mermaid", "Merman", "Minstrel", "Dagger", "Arrow",
-	"Giant", "Dryad"
+    "Carbuncle", "Pit", "Wench", "Pony", "Purple People Eater", "Codpiece",
+    "Sack", "Barmaid", "Mermaid", "Merman", "Minstrel", "Dagger", "Arrow",
+    "Giant", "Dryad", "Pixie", "Sphincter"
   ],
   "tavern_types": ["Inn", "Tavern", "Arms", "Pub", "Bar 'n Grill"]
 }
