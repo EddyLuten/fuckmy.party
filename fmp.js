@@ -3,12 +3,15 @@ var FMP = (function() {
       p_random_name,
       p_limits,
       p_random_taverns,
+      p_random_town,
       min_input,
       max_input,
       names_data,
       tavern_data,
+      town_data,
       button_generate_name,
-      button_generate_tavern;
+      button_generate_tavern,
+      button_generate_town;
 
   var q = function(query, context) {
     return (context || document).querySelector(query);
@@ -24,6 +27,7 @@ var FMP = (function() {
     p_limits = q('#limits');
     p_random_name = q('#random_name');
     p_random_taverns = q('#random_tavern');
+    p_random_town = q('#random_town');
     min_input = q('input[name=min]', p_limits);
     max_input = q('input[name=max]', p_limits);
 
@@ -34,6 +38,9 @@ var FMP = (function() {
 
     button_generate_tavern = q('#generate_tavern');
     button_generate_tavern.addEventListener('click', generateRandomTavernName);
+
+    button_generate_town = q('#generate_town');
+    button_generate_town.addEventListener('click', generateRandomTownName);
   };
 
   var randomInt = function(min, max) {
@@ -90,6 +97,19 @@ var FMP = (function() {
     )
   };
 
+  var getTownData = function(callback, onerror) {
+    if (town_data) { return callback ? callback() : null; }
+
+    getJSON(
+      'towns.json?' + randomLargeNumber(),
+      function(data) {
+        town_data = data;
+        if (callback) {callback(); }
+      },
+      function() { onerror(); }
+    )
+  };
+
   var generateStats = function() {
     min_input.classList.remove('error');
     max_input.classList.remove('error');
@@ -139,7 +159,21 @@ var FMP = (function() {
       alert('Sorry, something went wrong. Try again later.');
       button_generate_tavern.disabled = true;
     })
-  }
+  };
+
+  var generateRandomTownName = function() {
+    getTownData(function() {
+      prefixes = town_data["prefixes"] || [];
+      suffixes = town_data["suffixes"] || [];
+
+      q('.prefix', p_random_town).innerHTML = randomElement(prefixes);
+      q('.suffix', p_random_town).innerHTML = randomElement(suffixes);
+    },
+    function() {
+     alert('Sorry, something went wrong. Try again later.');
+     button_generate_town.disabled = true;
+    })
+  };
 
   return { init: init };
 }());
