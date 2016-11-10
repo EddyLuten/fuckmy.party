@@ -1,0 +1,69 @@
+{
+  "antagonist": [
+    "An evil boyscout",
+    "A living statue",
+    "A bag of posessed potatoes",
+    "A wizard named Jim",
+    "A disgruntled postal worker",
+    "A corrupt town mayor",
+    "A succubus tired of her job",
+    "A living construct made of fur and dust",
+    "A deformed yet highly intelligent dog"
+  ],
+  "motivation_prefix": [
+    "attempts to find",
+    "quenches a desire for",
+    "tries to get rid of"
+  ],
+  "motivation": [
+    "eternal life",
+    "inner peace",
+    "cheese doodles",
+    "kittens",
+    "a bucket of saliva",
+    "crusty socks",
+    "a bottle of posessed liquid",
+    "a crystal that summons bunnies"
+  ],
+  "action_prefix": [
+    "by",
+    "through"
+  ],
+  "action": [
+    "gnawing the bones of",
+    "kidnapping",
+    "killing",
+    "torturing",
+    "melting",
+    "boiling the flesh of"
+  ],
+  "victim": [
+    "two lemmings",
+    "a barmaid",
+    "some not-so-virgins",
+    "their cousin",
+    "a hairless lady",
+    "a possum",
+    "an old man",
+    "a group of children"
+  ],
+  "victim_properties": [
+    "with cap-less knees",
+    "posessing magical hair",
+    "with ties to the devil",
+    "with fake teeth",
+    "with ties to the cheese industry",
+    "working for a former president"
+  ],
+  "location_preposition": [
+    "in", "near"
+  ],
+  "location": [
+    "Amsterdam",
+    "a spooky castle",
+    "an all-male brothel",
+    "an infinite maze",
+    "a tavern that doesn't serve alcoholic drinks",
+    "a fantasy world totally not based on current day USA"
+  ]
+}

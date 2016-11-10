@@ -4,14 +4,17 @@ var FMP = (function() {
       p_limits,
       p_random_taverns,
       p_random_town,
+      p_random_plot,
       min_input,
       max_input,
       names_data,
       tavern_data,
       town_data,
+      plot_data,
       button_generate_name,
       button_generate_tavern,
-      button_generate_town;
+      button_generate_town,
+      button_generate_plot;
 
   var q = function(query, context) {
     return (context || document).querySelector(query);
@@ -28,6 +31,7 @@ var FMP = (function() {
     p_random_name = q('#random_name');
     p_random_taverns = q('#random_tavern');
     p_random_town = q('#random_town');
+    p_random_plot = q('#random_plot');
     min_input = q('input[name=min]', p_limits);
     max_input = q('input[name=max]', p_limits);
 
@@ -39,8 +43,11 @@ var FMP = (function() {
     button_generate_tavern = q('#generate_tavern');
     button_generate_tavern.addEventListener('click', generateRandomTavernName);
 
-    button_generate_town = q('#generate_town');
-    button_generate_town.addEventListener('click', generateRandomTownName);
+    // button_generate_town = q('#generate_town');
+    // button_generate_town.addEventListener('click', generateRandomTownName);
+
+    button_generate_plot = q('#generate_plot');
+    button_generate_plot.addEventListener('click', generateRandomPlot);
   };
 
   var randomInt = function(min, max) {
@@ -110,6 +117,19 @@ var FMP = (function() {
     )
   };
 
+  var getPlotData = function(callback, onerror) {
+    if (plot_data) { return callback ? callback() : null; }
+
+    getJSON(
+      'plots.json?' + randomLargeNumber(),
+      function(data) {
+        plot_data = data;
+        if (callback) {callback(); }
+      },
+      function() { onerror(); }
+    )
+  };
+
   var generateStats = function() {
     min_input.classList.remove('error');
     max_input.classList.remove('error');
@@ -173,6 +193,21 @@ var FMP = (function() {
      alert('Sorry, something went wrong. Try again later.');
      button_generate_town.disabled = true;
     })
+  };
+
+  var generateRandomPlot = function() {
+    getPlotData(function() {
+      var elements = a('span', p_random_plot);
+      for (var i = 0; i < elements.length; ++i) {
+        var name = elements[i].className;
+        elements[i].innerHTML = randomElement(plot_data[name]);
+      }
+      elements[elements.length - 1].innerHTML += '.';
+    },
+    function() {
+      alert('Sorry, something went wrong. Try again later.');
+      button_generate_plot.disabled = true;
+    });
   };
 
   return { init: init };
