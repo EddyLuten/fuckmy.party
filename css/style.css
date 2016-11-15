@@ -1,0 +1,20 @@
+body, html {
+    font-size: 1.2em;
+    font-family: "Roboto";
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #EE7552;
+}
+
+.jumbotron {
+    background-image: url("../images/party.jpg");
+    background-size: cover;
+    color: #EE7552;
+    font-weight: bold;
+    text-shadow:
+       -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
