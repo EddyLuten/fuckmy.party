@@ -1,0 +1,24 @@
+body, html {
+    font-size: 1.2em;
+    font-family: "Roboto", sans-serif;
+}
+
+footer {
+    font-size: medium;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #EE7552;
+}
+
+.jumbotron {
+    background-image: url("../images/fuckmy.party-header.jpg");
+    backgroundsize: cover;
+    color: #FFB985;
+    text-shadow:
+        -4px 0 #000,
+        0 4px #000,
+        4px 0 #000,
+        0 -4px #000;
+
+}

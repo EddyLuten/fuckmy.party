@@ -131,16 +131,16 @@ var FMP = (function() {
   };
 
   var generateStats = function() {
-    min_input.classList.remove('error');
-    max_input.classList.remove('error');
+    limits.classList.remove('has-error');
+    limits.classList.remove('has-error');
 
     var min = parseInt(min_input.value, 10);
     var max = parseInt(max_input.value, 10);
 
     if (isNaN(min) || min > max) {
-      return min_input.classList.add('error');
+      return limits.classList.add('has-error');
     } else if (isNaN(max) || max < min) {
-      return max_input.classList.add('error');
+      return limits.classList.add('has-error');
     }
 
     var stats = a('span', stats_generator);
