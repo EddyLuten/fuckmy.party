@@ -1,7 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="preconnect" href="//code.jquery.com">
   <link rel="preconnect" href="//maxcdn.bootstrapcdn.com">
   <link rel="preconnect" href="//cdnjs.cloudflare.com">
@@ -54,7 +56,7 @@
         </p>
       </div>
       <div class="row">
-        <ul id="stats_generator" class="list-inline text-center col-sm-10">
+        <ul id="stats_generator" class="list-inline text-center col-md-10 col-xs-12">
           <li>
             <strong title="Strength">STR</strong>
             <span>-</span>
@@ -80,15 +82,15 @@
             <span>-</span>
           </li>
         </ul>
-        <div class="col-sm-2 text-center">
+        <div class="col-md-2 hidden-xs text-center">
           <span class="copy-text"
                 data-source='["#stats_generator"]'
                 data-join=" ">&#x2398; Copy</span>
         </div>
       </div>
       <div id="limits" class="form-group row">
-        <label class="col-sm-1 text-right control-label" for="min-max">Range</label>
-        <div class="col-sm-5 text-center">
+        <label class="col-md-1 hidden-xs text-right control-label" for="min-max">Range</label>
+        <div class="col-md-5 col-xs-12 text-center">
           <input id="min_max"
                 name="min-max"
                 type="text"
@@ -106,7 +108,7 @@
         </div>
         <button id="generate_stats"
                 type="button"
-                class="btn btn-primary col-sm-6">Generate</button>
+                class="btn btn-primary col-md-6 col-xs-12">Generate</button>
       </div>
     </section>
 
@@ -119,11 +121,11 @@
         </p>
       </div>
       <div class="row">
-        <button id="generate_name" class="btn btn-primary col-sm-3">Generate</button>
-        <div id="random_name" class="col-sm-7">
+        <button id="generate_name" class="btn btn-primary col-md-3 col-xs-3">Generate</button>
+        <div id="random_name" class="col-md-7 col-xs-9">
           <span class="first"></span> <span class="last"></span>
         </div>
-        <div class="col-sm-2 text-center">
+        <div class="col-md-2 hidden-xs text-center">
           <span class="copy-text"
                 data-source='["#random_name"]'
                 data-join=" ">&#x2398; Copy</span>
@@ -140,14 +142,14 @@
         </p>
       </div>
       <div class="row">
-        <button id="generate_tavern" class="btn btn-primary col-sm-3">Generate</button>
-        <div id="random_tavern" class="col-sm-7">
+        <button id="generate_tavern" class="btn btn-primary col-md-3 col-xs-3">Generate</button>
+        <div id="random_tavern" class="col-md-7 col-xs-9">
           <span class="prefix"></span>
           <span class="modifier"></span>
           <span class="subject"></span>
           <span class="tavern_type"></span>
         </div>
-        <div class="col-sm-2 text-center">
+        <div class="col-md-2 hidden-xs text-center">
           <span class="copy-text"
                 data-source='["#random_tavern"]'
                 data-join=" ">&#x2398; Copy</span>
@@ -163,8 +165,8 @@
         </p>
       </div>
       <div class="row">
-        <button id="generate_plot" class="btn btn-primary col-sm-3">Generate</button>
-        <div id="random_plot" class="col-sm-7">
+        <button id="generate_plot" class="btn btn-primary col-md-3 col-xs-12">Generate</button>
+        <div id="random_plot" class="col-md-7 col-xs-12">
           <span class="antagonist"></span>
           <span class="motivation_prefix"></span>
           <span class="motivation"></span>
@@ -175,7 +177,7 @@
           <span class="location_preposition"></span>
           <span class="location"></span>
         </div>
-        <div class="col-sm-2 text-center">
+        <div class="col-md-2 hidden-xs text-center">
           <span class="copy-text"
                 data-source='["#random_plot"]'
                 data-join=" ">&#x2398; Copy</span>

@@ -30,13 +30,13 @@ footer {
   background:
     linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0) 0%,
+      rgba(255, 255, 255, 0.25) 0%,
       rgba(255, 255, 255, 1) 100%
     ),
     url('../images/fuckmy.party-header.jpg');
   background-size: cover;
   color: #EE7552;
-  text-shadow: 4px 4px 8px #000;
+  text-shadow: 2px 2px 4px #000;
 }
 
 #slider-min-max .slider-rangeHighlight {
