@@ -1,53 +1,45 @@
 var FMP = (function() {
-  var stats_generator,
-      p_random_name,
-      p_limits,
-      p_random_taverns,
-      p_random_town,
-      p_random_plot,
-      min_input,
-      max_input,
-      names_data,
-      tavern_data,
-      town_data,
-      plot_data,
-      button_generate_name,
-      button_generate_tavern,
-      button_generate_town,
-      button_generate_plot;
-
-  var q = function(query, context) {
-    return (context || document).querySelector(query);
-  };
-
-  var a = function(query, context) {
-    return (context || document).querySelectorAll(query);
-  };
+  var
+    names_data = null,
+    tavern_data = null,
+    town_data = null,
+    plot_data = null;
 
   var init = function() {
-    names_data = null;
-    stats_generator = q('#stats_generator');
-    p_limits = q('#limits');
-    p_random_name = q('#random_name');
-    p_random_taverns = q('#random_tavern');
-    p_random_town = q('#random_town');
-    p_random_plot = q('#random_plot');
-    min_input = q('input[name=min]', p_limits);
-    max_input = q('input[name=max]', p_limits);
+    $(generate_stats).click(generateStats);
+    $(generate_name).click(generateRandomName);
+    $(generate_tavern).click(generateRandomTavernName);
+    $(generate_plot).click(generateRandomPlot);
+    $('.copy-text').click(copyText);
+  };
 
-    q('#btn_go').addEventListener('click', generateStats);
+  var copyText = function() {
+    var $this = $(this);
+    var text = $.map($this.data('source'), function(value) {
+      return $.trim($(value).text().replace(/\s+/g, ' '));
+    }).join($this.data('join')).trim();
 
-    button_generate_name = q('#generate_name');
-    button_generate_name.addEventListener('click', generateRandomName);
 
-    button_generate_tavern = q('#generate_tavern');
-    button_generate_tavern.addEventListener('click', generateRandomTavernName);
+    var oldText = $this.text();
+    if (text) {
+      var area = $('<textarea>').text(text);
+      $('body').append(area);
+      area.select();
+      document.execCommand('copy');
+      area.remove();
 
-    // button_generate_town = q('#generate_town');
-    // button_generate_town.addEventListener('click', generateRandomTownName);
-
-    button_generate_plot = q('#generate_plot');
-    button_generate_plot.addEventListener('click', generateRandomPlot);
+      $this.text('Copied!').addClass('okay');
+      setTimeout(function () {
+        $this.text(oldText);
+        $this.removeClass('okay');
+      }, 1500);
+    } else {
+      $this.text('Empty').addClass('nope');
+      setTimeout(function () {
+        $this.text(oldText);
+        $this.removeClass('nope');
+      }, 1500);
+    }
   };
 
   var randomInt = function(min, max) {
@@ -130,35 +122,23 @@ var FMP = (function() {
     )
   };
 
-  var generateStats = function() {
-    limits.classList.remove('has-error');
-    limits.classList.remove('has-error');
-
-    var min = parseInt(min_input.value, 10);
-    var max = parseInt(max_input.value, 10);
-
-    if (isNaN(min) || min > max) {
-      return limits.classList.add('has-error');
-    } else if (isNaN(max) || max < min) {
-      return limits.classList.add('has-error');
-    }
-
-    var stats = a('span', stats_generator);
-    for (var i = 0; i < stats.length; ++i) {
-      stats[i].innerHTML = randomInt(min, max);
-    }
+  var generateStats = function () {
+    var values = $(min_max).slider('getValue');
+    $('span', stats_generator).each(function () {
+      $(this).text(randomInt(values[0], values[1]));
+    });
   };
 
   var generateRandomName = function() {
     getNamesData(function() {
       first_names = names_data["first_names"] || [];
       last_names = names_data["last_names"] || [];
-      q('.first', p_random_name).innerHTML = randomElement(first_names);
-      q('.last', p_random_name).innerHTML = randomElement(last_names);
+      $('.first', random_name).text(randomElement(first_names));
+      $('.last', random_name).text(randomElement(last_names));
     },
     function() {
       alert('Sorry, something went wrong. Try again later.');
-      button_generate_name.disabled = true;
+      generate_name.disabled = true;
     });
   };
 
@@ -169,35 +149,21 @@ var FMP = (function() {
       subjects = tavern_data["subjects"] || [];
       tavern_types = tavern_data["tavern_types"] || [];
 
-      q('.prefix', p_random_taverns).innerHTML = randomElement(prefixes);
-      q('.modifier', p_random_taverns).innerHTML = randomElement(modifiers);
-      q('.modifier', p_random_taverns).innerHTML = randomElement(modifiers);
-      q('.subject', p_random_taverns).innerHTML = randomElement(subjects);
-      q('.tavern_type', p_random_taverns).innerHTML = randomElement(tavern_types);
+      $('.prefix', random_tavern).html(randomElement(prefixes));
+      $('.modifier', random_tavern).html(randomElement(modifiers));
+      $('.modifier', random_tavern).html(randomElement(modifiers));
+      $('.subject', random_tavern).html(randomElement(subjects));
+      $('.tavern_type', random_tavern).html(randomElement(tavern_types));
      },
      function() {
       alert('Sorry, something went wrong. Try again later.');
-      button_generate_tavern.disabled = true;
-    })
-  };
-
-  var generateRandomTownName = function() {
-    getTownData(function() {
-      prefixes = town_data["prefixes"] || [];
-      suffixes = town_data["suffixes"] || [];
-
-      q('.prefix', p_random_town).innerHTML = randomElement(prefixes);
-      q('.suffix', p_random_town).innerHTML = randomElement(suffixes);
-    },
-    function() {
-     alert('Sorry, something went wrong. Try again later.');
-     button_generate_town.disabled = true;
+      generate_tavern.disabled = true;
     })
   };
 
   var generateRandomPlot = function() {
     getPlotData(function() {
-      var elements = a('span', p_random_plot);
+      var elements = $('span', random_plot);
       for (var i = 0; i < elements.length; ++i) {
         var name = elements[i].className;
         elements[i].innerHTML = randomElement(plot_data[name]);
@@ -206,7 +172,7 @@ var FMP = (function() {
     },
     function() {
       alert('Sorry, something went wrong. Try again later.');
-      button_generate_plot.disabled = true;
+      generate_plot.disabled = true;
     });
   };
 

@@ -1,113 +1,170 @@
 <html>
 
 <head>
-  <title>Fuck My Party - Role-Playing Tools for Jaded Players</title>
   <meta charset="UTF-8">
+  <link rel="preconnect" href="//code.jquery.com">
+  <link rel="preconnect" href="//maxcdn.bootstrapcdn.com">
+  <link rel="preconnect" href="//cdnjs.cloudflare.com">
+  <link rel="preconnect" href="//fonts.googleapis.com">
+  <link rel="preconnect" href="//www.google-analytics.com">
+  <link rel="preconnect" href="//fonts.gstatic.com">
+  <link rel="preload" href="/fmp.js" as="script" />
+  <link rel="preload" href="/css/style.css" as="style" />
+  <link rel="preload" href="/images/fuckmy.party-header.jpg" as="image" />
+
+  <title>Fuck My Party - Role-Playing Tools for Jaded Players</title>
+  
   <script async type='text/javascript' src='fmp.js'></script>
   <!-- Bootstrap  -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+  <link rel="stylesheet"
+        href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous" />
+  <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.3/css/bootstrap-slider.min.css"
+        integrity="sha256-ED+X7ZpkRd9HICSuh+Z4gDrQEr2O1WP3yU6uYsvcP2s="
+        crossorigin="anonymous" />
   <!-- End Bootstrap -->
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic' />
+  <link rel='stylesheet'
+        href='//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic' />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-  <div class="container">
-    <div class="row text-center jumbotron">
-      <h1><strong>Fuck My Party</strong></h1>
+  <main class="container">
+
+    <header class="row text-center jumbotron">
+      <h1>Fuck My Party</h1>
+    </header>
+
+    <section>
       <p>
-        <strong>
-        Feel a deep resentment towards your RPG party? Did your GM fuck you over one too many times? Are you <em>that</em>        GM?
-        <a href="http://fuckmy.party">fuckmy.party</a> is the place for you.
-        </strong>
+        Feel a deep resentment towards your RPG party? Did your GM fuck you over
+        one too many times? Are you <em>that</em> GM? Welcome home.
       </p>
-    </div>
-    <div class="row">
-      <h2>Stats Randomizer</h2>
-      <p>
-        Fuck rolling stats. Generate some random ones right here.
-      </p>
-      <ul id="stats_generator" class="list-inline">
-        <li title="Strength">
-          <strong>STR</strong>
-          <span>-</span>
-        </li>
-        <li title="Dexterity">
-          <strong>DEX</strong>
-          <span>-</span>
-        </li>
-        <li title="Constitution">
-          <strong>CON</strong>
-          <span>-</span>
-        </li>
-        <li title="Intelligence">
-          <strong>INT</strong>
-          <span>-</span>
-        </li>
-        <li title="Wisdom">
-          <strong>WIS</strong>
-          <span>-</span>
-        </li>
-        <li title="Charisma">
-          <strong>CHA</strong>
-          <span>-</span>
-        </li>
-      </ul>
-      <div id="limits" class="form-inline">
+    </section>
+
+    <section>
+      <div class="row">
+        <h2>Stats Randomizer</h2>
         <p>
-          <label for="min">Min</label>
-          <input id="min" name="min" type="text" size="1" max="2" value="8" class="form-control" />
-        </p>
-        <p>
-          <label for="max">Max</label>
-          <input id="max" name="max" type="text" size="1" max="2" value="16" class="form-control" />
-        </p>
-        <p>
-          <button id="btn_go" class="btn btn-default">Generate</button>
+          Rolling stats sucks. Generate some random ones right here.
         </p>
       </div>
+      <div class="row">
+        <ul id="stats_generator" class="list-inline text-center col-sm-10">
+          <li>
+            <strong title="Strength">STR</strong>
+            <span>-</span>
+          </li>
+          <li>
+            <strong title="Dexterity">DEX</strong>
+            <span>-</span>
+          </li>
+          <li>
+            <strong title="Constitution">CON</strong>
+            <span>-</span>
+          </li>
+          <li>
+            <strong title="Intelligence">INT</strong>
+            <span>-</span>
+          </li>
+          <li>
+            <strong title="Wisdom">WIS</strong>
+            <span>-</span>
+          </li>
+          <li>
+            <strong title="Charisma">CHA</strong>
+            <span>-</span>
+          </li>
+        </ul>
+        <div class="col-sm-2 text-center">
+          <span class="copy-text"
+                data-source='["#stats_generator"]'
+                data-join=" ">&#x2398; Copy</span>
+        </div>
+      </div>
+      <div id="limits" class="form-group row">
+        <label class="col-sm-1 text-right control-label" for="min-max">Range</label>
+        <div class="col-sm-5 text-center">
+          <input id="min_max"
+                name="min-max"
+                type="text"
+                data-slider-id="slider-min-max"
+                data-provide="slider"
+                data-slider-tooltip="show"
+                data-slider-step="1"
+                data-slider-min="1"
+                data-slider-max="20"
+                data-slider-value="[8,18]"
+                data-slider-ticks="[1, 5, 8, 10, 15, 18, 20]"
+                data-slider-ticks-labels='["1", "5", "8", "15", "18", "20"]'
+                data-slider-rangeHighlights='[{ "start": 1, "end": 9 }]'
+          />
+        </div>
+        <button id="generate_stats"
+                type="button"
+                class="btn btn-primary col-sm-6">Generate</button>
+      </div>
+    </section>
+
+    <section>
       <div class="row">
         <h2>Character Name Randomizer</h2>
         <p>
           Names are difficult to come up with, fuck them. Here's a bad name for your shit character. Variables taken into account:
           <em>none</em>.
         </p>
-        <p>
-          <button id="generate_name" class="btn btn-default">Generate</button>
-        </p>
-        <p id="random_name">
-          <span class="first"></span> <span class="last"></span>
-        </p>
       </div>
+      <div class="row">
+        <button id="generate_name" class="btn btn-primary col-sm-3">Generate</button>
+        <div id="random_name" class="col-sm-7">
+          <span class="first"></span> <span class="last"></span>
+        </div>
+        <div class="col-sm-2 text-center">
+          <span class="copy-text"
+                data-source='["#random_name"]'
+                data-join=" ">&#x2398; Copy</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <div class="row">
         <h2>Tavern Name Randomizer</h2>
         <p>
           &ldquo;Hey, GM, what's this tavern called?&rdquo;
           <em>Shit.</em> Well, here it is.
         </p>
-        <p>
-          <button id="generate_tavern" class="btn btn-default">Generate</button>
-        </p>
-        <p id="random_tavern">
+      </div>
+      <div class="row">
+        <button id="generate_tavern" class="btn btn-primary col-sm-3">Generate</button>
+        <div id="random_tavern" class="col-sm-7">
           <span class="prefix"></span>
           <span class="modifier"></span>
           <span class="subject"></span>
           <span class="tavern_type"></span>
-        </p>
+        </div>
+        <div class="col-sm-2 text-center">
+          <span class="copy-text"
+                data-source='["#random_tavern"]'
+                data-join=" ">&#x2398; Copy</span>
+        </div>
       </div>
+    </section>
+
+    <section>
       <div class="row">
         <h2>Plot Randomizer <sup>BETA</sup></h2>
         <p>
           Beta, because it's horrible.
         </p>
-        <p>
-          <button id="generate_plot" class="btn btn-default">Generate</button>
-        </p>
-        <p id="random_plot">
+      </div>
+      <div class="row">
+        <button id="generate_plot" class="btn btn-primary col-sm-3">Generate</button>
+        <div id="random_plot" class="col-sm-7">
           <span class="antagonist"></span>
           <span class="motivation_prefix"></span>
           <span class="motivation"></span>
@@ -117,41 +174,46 @@
           <span class="victim_properties"></span>
           <span class="location_preposition"></span>
           <span class="location"></span>
-        </p>
+        </div>
+        <div class="col-sm-2 text-center">
+          <span class="copy-text"
+                data-source='["#random_plot"]'
+                data-join=" ">&#x2398; Copy</span>
+        </div>
       </div>
-      <!--
-        <h2>Town Name Randomizer</h2>
-        <p>
-          <button id="generate_town">Generate</button>
-        </p>
-        <p id="random_town">
-          <span class="prefix"></span><span class="suffix"></span>
-        </p>
-        -->
-      <footer class="text-center row">
-        <a href="https://github.com/EddyLuten/fuckmy.party">
-            Fork this site on GitHub!
-          </a>
-        <p>
-          We're open to changes and additions! Disclaimer: Fuckmy.party is satirical in nature and may or may not generate real names,
-          entirely accidentally. If you feel that there is questionable content, feel free to open an issue on GitHub.
-        </p>
-      </footer>
-      <script type='text/javascript'>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    </section>
 
-          ga('create', 'UA-301718-15', 'auto');
-          ga('send', 'pageview');
+    <footer class="text-center">
+      <a href="https://github.com/EddyLuten/fuckmy.party">
+        Fork this site on GitHub!
+      </a>
+      <p>
+        We're open to changes and additions! Disclaimer: Fuckmy.party is
+        satirical in nature and may or may not generate real names, entirely
+        accidentally. If you feel that there is questionable content, feel free
+        to open an issue on GitHub.<br />Copyright &copy; 2016.
+      </p>
+    </footer>
+  </main>
 
-        </script>
-      <!-- Bootstrap compiled and minified JavaScript -->
-      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
-        crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-    </div>
+    <script type='text/javascript'>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-301718-15', 'auto');
+      ga('send', 'pageview');
+      </script>
+    <!-- Bootstrap compiled and minified JavaScript -->
+    <script src="//code.jquery.com/jquery-3.1.1.slim.min.js"
+            integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+            crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.3/bootstrap-slider.min.js"
+            integrity="sha256-kPeeHHjF5O/nXuHuCjJCxIiOvdyW5UHeKzd2qon3oAw="
+            crossorigin="anonymous"></script>
   </body>
 </html>
